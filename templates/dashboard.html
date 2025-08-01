@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1e1e1e;
+            padding: 15px;
+            color: white;
+            height: 100vh;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .sub-menu {
+            margin-left: 15px;
+            display: none;
+        }
+
+        .sub-menu a {
+            display: block;
+            background: #ccc;
+            padding: 6px;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #000;
+            border-radius: 4px;
+        }
+
+        .toggle::after {
+            content: ' ▼';
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="content">
+    <h2>Welcome, {{ session.username }}</h2>
+    <p>This is the dashboard content area.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<style>
+    body {
+        background: #4283d0; /* fallback for old browsers */
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .login-page {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto;
+    }
+    .form-group label {
+        text-align: left;
+        display: block;
+        margin: 5px 0 10px 0;
+    }
+    .form {
+        position: relative;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 360px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+        border-radius: 5px;
+        float: right;
+        width: 100%;
+        margin: 0 auto 100px;
+    }
+
+        .form input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #4283d0;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+
+            .form button:hover, .form button:active, .form button:focus {
+                background: #4c60da;
+            }
+
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+
+            .form .message a {
+                color: #4c60da;
+                text-decoration: none;
+            }
+
+        .form .register-form {
+            display: none;
+        }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+        .container:before, .container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .container .info {
+            margin: 50px auto;
+            text-align: center;
+        }
+
+            .container .info h1 {
+                margin: 0 0 15px;
+                padding: 0;
+                font-size: 36px;
+                font-weight: 300;
+                color: #1a1a1a;
+            }
+
+            .container .info span {
+                color: #4d4d4d;
+                font-size: 12px;
+            }
+
+                .container .info span a {
+                    color: #000000;
+                    text-decoration: none;
+                }
+
+                .container .info span .fa {
+                    color: #EF3B3A;
+                }
+    #erroeMsg{
+       color: #EF3B3A;
+    }
+   
+    .Input_RememberMe label {
+        display: flex;
+        align-items: center;
+       
+    }
+    .Input_RememberMe input {
+        margin: 0;
+        width: auto;
+        margin-right: 5px;
+    }
+    .formFlex {
+        display: flex;
+        align-items: center;
+        width: 1336px;
+        justify-content: space-between;
+        max-width: 1000%;
+        margin: 0 auto;
+        height: 100vh;
+    }
+    .login-page, .rekhtaLogo {
+        flex: 0 0 50%;
+    }
+    .rekhtaLogo {
+        border-right:1px solid #aab3f9
+    }
+        .rekhtaLogo svg {
+            width: 512px;
+            height: 512px;
+        }
+    .login-page {
+        width: 100%;
+    }
+      
+        .form-group a {
+            font-size: 14px;
+            color: #a3a3a3;
+            text-decoration: none;
+        }
+
+</style>
+
+<section class="formFlex">
+     <div class="rekhtaLogo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="136.933" height="21.603" viewBox="0 0 136.933 21.603">
+            <g id="rd_logo" data-name="rd logo" transform="translate(-104.261 -154.781)">
+                <g id="Group_3749" data-name="Group 3749" transform="translate(104.261 154.781)">
+                    <g id="Group_3748" data-name="Group 3748" transform="translate(0 0)">
+                        <path id="Path_2044" data-name="Path 2044" d="M160.355,202.075H151.5a3.906,3.906,0,0,1-.075-.849,11.452,11.452,0,0,1,.767-3.846,3.574,3.574,0,0,1,3.93-2.541,3.394,3.394,0,0,1,3.233,1.769,7.784,7.784,0,0,1,1.156,4.161,10.258,10.258,0,0,1-.154,1.31Zm23.874-2.312h0a12.656,12.656,0,0,1,8.086-3.389v-.923H181.621v.923c2.546.156,3.158.387,3.158,1.233,0,.385-.692,1.077-1.538,1.615l-6.858,4.161V189.441c-3.771.079-4.618.156-9.615.24v1.079h3.158v18.405h-3v1.082h12.245v-1.082h-2.774v-4.387l2.315-1.464,4.156,5.851h-1.769v1.082h12.552v-1.082h-2.411l-7.009-9.4Zm35.964,2h0a7.437,7.437,0,0,0-2-5.466,8.341,8.341,0,0,0-6.25-2.079,8.815,8.815,0,0,0-7.778,3.389v-8.173c-4,.079-4.771.156-9.935.24v1.079h3.255l.077,18.405h-3.233v1.082h13.244v-1.082h-3.389v-7.625a7.692,7.692,0,0,1,1-4,5.94,5.94,0,0,1,4.312-1.923c2.466,0,3.93,1.618,3.93,4.622v8.932h-3.312v1.082h13.244v-1.082H220.2V201.77Zm12.788,7.55h0a2.582,2.582,0,0,0,2.233-1.233l.461.31c-.079.462-1,2.461-5.161,2.461a5.913,5.913,0,0,1-5.158-2.079,5.745,5.745,0,0,1-.772-3v-9.4h-2.461v-.923c4.62,0,6.466-1.308,8.009-5.392h.846v5.392h4.468v.923H230.9v9.242c0,1.923.077,2.233.389,2.695a1.822,1.822,0,0,0,1.683,1Zm-93.343-14.478h0a5.365,5.365,0,0,0-5.009,3.079v-2.928h-.841a7.976,7.976,0,0,1-2.074,3.312,9.264,9.264,0,0,1-5.62,2h-2.163v.923h2.163v7.855H122.85v1.077h15.023V209.08h-3.238V201.76a10.1,10.1,0,0,1,.541-3.079,4.649,4.649,0,0,1,4.468-3.158,3.961,3.961,0,0,1,3.387,1.541,4.538,4.538,0,0,0-2.466-.849,2.786,2.786,0,1,0,.24,5.545,3.5,3.5,0,0,0,3.548-3.31,4.31,4.31,0,0,0-4.7-3.618Zm110.9,13.014h0a4.63,4.63,0,0,1-3.7,2,3.142,3.142,0,0,1-3.231-3.159c0-1.772,1.228-3.007,4.086-4.007a8.355,8.355,0,0,0,3.464-1.683c.074,1.233.154,1.848.154,2.692a8.125,8.125,0,0,1-.772,4.161Zm9.242,1.308h-1.774v-6.543c0-3.7-.382-5.084-1.769-6.4a11.658,11.658,0,0,0-7.394-1.923,23.66,23.66,0,0,0-8.7,1.464,3,3,0,0,0-1.846,2.695c0,1.541,1.305,2.543,3.235,2.543,1.848,0,3.156-1,3.156-2.31a2.644,2.644,0,0,0-2.93-2.235,4.769,4.769,0,0,0-1.231.24A9.341,9.341,0,0,1,246.3,195.3c3,0,5.007,1.308,5.007,3.31,0,1.923-2.235,3.238-6.315,3.543a14.927,14.927,0,0,0-6.086,1.308,3.745,3.745,0,0,0-1.846,3.315c0,2.771,2.387,4.235,6.774,4.235a10.79,10.79,0,0,0,6.163-1.464,9.032,9.032,0,0,0,1.466-1.683v2.389h8.317v-1.082ZM164.28,196.6h0a12.206,12.206,0,0,0-8.317-2.541c-6.853,0-11.55,3.545-11.55,8.7a7.538,7.538,0,0,0,3.233,6.161,16.422,16.422,0,0,0,8.932,2.079c6.009,0,9.245-1.848,10.322-5.769h-1.077c-.923,3.082-3.618,4.7-7.692,4.7-4.312,0-6.468-2.231-6.545-6.7h15.4a8.4,8.4,0,0,0-2.709-6.627Z" transform="translate(-122.85 -189.434)" fill="#fff" fill-rule="evenodd" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+<div class="login-page">
+<div class="form">
+<form method="POST" action="/login">  
+    <h1>Login</h1>
+    <span><img src='https://rekhta.org/images/Cms/Newsletter/RekhtaLearning/logo2.png' alt='logo' style='width: 100px; height:50px; padding: 0px 8px;' /></span>  
+         {% if error %}
+            <div style="color: red;">{{ error }}</div>
+        {% endif %}    
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="submit" value="Login" />
+    
+</form>
+</div>
+</div>
+ </div> 
+ </section>

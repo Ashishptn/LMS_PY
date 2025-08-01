@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekhta LMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">    
+    <style>
+        .submenu {
+           padding-left: 20px;
+           background-color: #444;
+            display: none; 
+        }
+        .submenu.show {
+    display: block;
+}
+
+        .menu-item {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 6px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 5px 10px;
+            background-color: #ccc;
+            color: #e22071;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 3px 0;
+        }
+        .submenu a.active {
+        font-weight: bold;
+        color: #00f;
+    }
+
+    .wrapper {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #222;
+    color: white;
+    padding: 20px 10px;
+    position: fixed;        /* Fixes the sidebar */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;       /* Enables scroll if sidebar is taller than screen */
+    z-index: 1000;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar li {
+    margin-bottom: 5px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    background-color: #333;
+}
+
+.submenu {
+   padding-left: 20px;
+   background-color: #444;
+}
+
+.submenu a {
+    display: block;
+    padding: 5px 10px;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.submenu a.active {
+    color: #00f;
+    font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;  /* Push content to the right of sidebar */
+    padding: 20px;
+    flex: 1;
+}
+
+.submenu li a {
+    color: #ccc;
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+    </style>
+</head>
+<body>
+     
+    <div class="wrapper">
+    <!-- Sidebar -->
+    
+    <nav class="sidebar">
+    <h2><span class="logo-text">rekhta</span> <span class="logo-sub">learning</span></h2>            
+    <ul>
+        {% for parent in main_menus %}
+            <li>
+                <div class="menu-item" onclick="toggleMenu('{{ parent.MenuId }}')">
+                    {{ parent.MenuName }}
+                </div>
+                {% if sub_menus.get(parent.MenuId) %}
+                    <ul id="submenu-{{ parent.MenuId }}" class="submenu hidden">
+                        {% for child in sub_menus[parent.MenuId] %}
+                            <li><a href="{{ child.MenuURL }}">{{ child.MenuName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <div class="title">WELCOME TO REKHTA LMS</div>
+            <div class="logout"><a href="/logout" style="color:white;">LOGOUT</a></div>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</div>
+
+   <script>
+function toggleMenu(menuId) {
+    // Hide all submenus
+    document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+
+    // Toggle selected submenu
+    const submenu = document.getElementById('submenu-' + menuId);
+    if (submenu) {
+        submenu.style.display = 'block';
+    }
+}
+
+
+
+// Auto expand menu on page load
+window.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+
+    document.querySelectorAll(".submenu a").forEach(link => {
+        if (link.getAttribute("href") === currentPath) {
+            // Highlight active link
+            link.classList.add("active");
+
+            // Show parent submenu
+            const submenu = link.closest(".submenu");
+            if (submenu) {
+                submenu.classList.add("show");
+            }
+        }
+    });
+});
+
+
+</script>
+
+
+</body>
+</html>

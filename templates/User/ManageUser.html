@@ -1,0 +1,46 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="wrapper">
+    
+    <div class="main-content">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>User Type</th>
+                    <th>Status</th>
+                    <th>Active</th>
+                    <th>Create On</th>
+                    <th>Modify On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>    
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>{{ user[3] }}</td>
+                        <td>{{ user[4] }}</td>
+                        <td>{{ 'Normal' if user[5]=='N' else user[5] }}</td>
+                        <td>{{ user[6] }}</td>
+                        <td>{{ 'Yes' if user[7] == 1 else 'No' }}</td>
+                        <td>{{ user[8] }}</td>
+                        <td>{{ user[9] }}</td>
+                        <td>
+                            <a href="/edit/{{ user[0] }}" class="btn btn-warning btn-sm">Edit</a>
+                            <!-- <a href="/delete/{{ user[0] }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a> -->
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
