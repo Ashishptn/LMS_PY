@@ -6,6 +6,9 @@ from db_config import get_menu_items
 from user import user_blueprint
 
 
+
+
+
 app = Flask(__name__)
 app.secret_key = "6e6bad26cb7e0974318af3271bbf4453556bcb1b7900b3b1819724d67e4a6cf6"
 app.config["SESSION_TYPE"] = "filesystem"
@@ -13,11 +16,25 @@ Session(app)
 
 app.register_blueprint(user_blueprint)
 
+def build_menu_dict(menu_items):
+    menu_dict = {}
+    for item in menu_items:
+        parent_id = item.get("ParentId")
+        if parent_id not in menu_dict:
+            menu_dict[parent_id] = []           
+        if parent_id in menu_dict:
+            menu_dict[parent_id].append(item)
+
+    return menu_dict
+
 @app.context_processor
 def inject_menu():
-    main_menus = get_menu_items() 
-    sub_menus = get_menu_items()
-    return dict(main_menus=main_menus, sub_menus=sub_menus)
+    menu_items = get_menu_items()
+    menu_dict = build_menu_dict(menu_items)
+    main_menus = menu_dict.get(None, []) + menu_dict.get(0, [])
+    return dict(main_menus=main_menus, sub_menus=menu_dict)
+
+
 
 @app.route('/')
 def home():
@@ -64,26 +81,6 @@ def login():
 
 
 
-# @app.route('/login', methods=["GET", "POST"])
-# def login():
-    # error = None
-    # if request.method == "POST":
-        # username = request.form["username"]
-        # password = request.form["password"]
-
-        # conn = get_connection()
-        # cursor = conn.cursor()
-        # cursor.execute("SELECT * FROM Users WHERE Username = ? AND Password = ?", (username, password))
-        # user = cursor.fetchone()
-        # cursor.close()
-        # conn.close()
-
-        # if user:
-            # session["username"] = username
-            # return redirect('/')
-        # else:
-            # error = "Invalid username or password"
-    # return render_template('login.html', error=error)
 
 
 def build_menu_dict(menu_items):

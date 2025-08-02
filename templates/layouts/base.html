@@ -127,7 +127,11 @@
     <!-- Sidebar -->
     
     <nav class="sidebar">
-    <h2><span class="logo-text">rekhta</span> <span class="logo-sub">learning</span></h2>            
+    <h2>
+        <span class="logo-text">rekhta</span>
+<a href="{{ url_for('dashboard') }}"></a>
+<span class="logo-sub">learning</span>
+    </h2>            
     <ul>
         {% for parent in main_menus %}
             <li>
@@ -137,7 +141,7 @@
                 {% if sub_menus.get(parent.MenuId) %}
                     <ul id="submenu-{{ parent.MenuId }}" class="submenu hidden">
                         {% for child in sub_menus[parent.MenuId] %}
-                            <li><a href="{{ child.MenuURL }}">{{ child.MenuName }}</a></li>
+                            <li><a href=" {{ child.MenuURL }}">{{ child.MenuName }}</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}
