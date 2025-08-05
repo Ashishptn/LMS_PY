@@ -141,7 +141,13 @@
                 {% if sub_menus.get(parent.MenuId) %}
                     <ul id="submenu-{{ parent.MenuId }}" class="submenu hidden">
                         {% for child in sub_menus[parent.MenuId] %}
-                            <li><a href=" {{ child.MenuURL }}">{{ child.MenuName }}</a></li>
+                            <li>
+                                {% if child.endpoint %}
+                                        <a href="{{ url_for(child.endpoint) }}">{{ child.MenuName }}</a>
+                                    {% else %}
+                                        <a href="#">{{ child.MenuName }}</a>  {# fallback or disabled link #}
+                                    {% endif %}
+                            </li>
                         {% endfor %}
                     </ul>
                 {% endif %}

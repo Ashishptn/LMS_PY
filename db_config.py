@@ -1,4 +1,5 @@
 import pyodbc
+from utils.menu_endpoint import menu_endpoint
 
 def get_connection():
     conn = pyodbc.connect(
@@ -14,18 +15,18 @@ def get_menu_items():
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("EXEC SP_GetMainMenu_py")
-    #rows = cursor.fetchall()
     columns = [col[0] for col in cursor.description]
     rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
     cursor.close()
     conn.close()
 
-    # print("== DEBUG: Raw menu items ==")
-    # for r in rows:
-        # print(r)
+    # Map endpoints
+    for row in rows:
+        area = row.get("Area")
+        view = row.get("MenuURL")
+        row["endpoint"] = menu_endpoint(area, view)  # 👈 set valid endpoint here
 
     return rows
-
 
     # Group by ParentId
     menu_dict = {}

@@ -16,7 +16,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@user_blueprint.route('/ManageUser')
+@user_blueprint.route('/ManageUser', endpoint='manage_user')
 def manage_user():
     # Get current page from query string
     page = int(request.args.get('page', 1))
@@ -47,7 +47,7 @@ def manage_user():
     )
 
 
-@user_blueprint.route('/UserRole')
+@user_blueprint.route('/UserRole', endpoint='manage_role')
 def manage_role():
     # Get current page from query string
     page = int(request.args.get('page', 1))
@@ -77,7 +77,7 @@ def manage_role():
         total_pages=total_pages
     )
 
-@user_blueprint.route('/Register', methods=['GET', 'POST'])
+@user_blueprint.route('/Register', methods=['GET', 'POST'], endpoint='register')
 def register():
     conn = get_connection()
     cursor = conn.cursor()
