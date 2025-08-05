@@ -27,6 +27,18 @@ def build_menu_dict(menu_items):
 
     return menu_dict
 
+
+@app.route("/routes")
+def list_routes():
+    import urllib
+    output = []
+    for rule in app.url_map.iter_rules():
+        methods = ','.join(rule.methods)
+        line = urllib.parse.unquote(f"{rule.endpoint:30s} {methods:20s} {rule}")
+        output.append(line)
+    return "<pre>" + "\n".join(sorted(output)) + "</pre>"
+
+
 @app.context_processor
 def inject_menu():
     menu_items = get_menu_items()

@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data" class="row">
+    <!-- Fields for name, email, address, etc. -->
+    <input type="text" name="email" class="form-control" placeholder="email" style="width: 50%;" required>
+    <input type="text" name="name" class="form-control" placeholder="name"  style="width: 50%;" required>
+    <input type="text" name="phone" class="form-control" placeholder="phone"  style="width: 50%;" required>
+    <input type="text" name="street" class="form-control" placeholder="street"  style="width: 50%;" required>
+    <input type="text" name="city" class="form-control" placeholder="city"  style="width: 50%;" required>
+    <input type="text" name="state" class="form-control" placeholder="state"  style="width: 50%;" required>
+    <input type="text" name="postal" class="form-control" placeholder="postal"  style="width: 50%;" required>
+    <input type="text" name="password" class="form-control" placeholder="password"  style="width: 50%;" required>
+    <input type="text" name="confirm_password" class="form-control" placeholder="confirm_password" style="width: 50%;" required>
+    <div class="form-floating py-2 col-6">
+        <select name="role" class="form-select" required>
+            <option disabled selected>-Select Role-</option>
+            {% for role in roles %}
+                <option value="{{ role[0] }}">{{ role[1] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-floating py-2 col-6">
+        <input type="file" id="uploadBox" name="image" class="form-control" onchange="ShowHideText();" />
+        <label>Upload Image</label>
+    </div>
+
+    <button type="submit" class="w-100 btn btn-primary">Register</button>
+</form>
+{% endblock %}
